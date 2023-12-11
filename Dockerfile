@@ -7,7 +7,9 @@ COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
-RUN apt-get update && apt-get install -y nginx \
+RUN set -eux \
+    && apk update \
+    && apk add --no-cache bash nginx \
     && mkdir -p /app/logs \
     && chmod -Rf 666 /app/logs
 
