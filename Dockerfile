@@ -6,6 +6,7 @@ USER root
 RUN set -eux \
     && apk update \
     && apk add --no-cache bash nginx \
+    && mkdir -p /app/web \
     && mkdir -p /app/logs \
     && chmod -Rf 666 /app/logs
 
